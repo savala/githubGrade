@@ -1,10 +1,14 @@
-module.exports = {
-    context: __dirname + "/app",
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-    entry: {
-        javascript: "./app.js",
-        html: "./index.html",
-    },
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: __dirname + '/app/index.html',
+    filename: 'index.html',
+    inject: 'body'
+});
+module.exports = {
+    entry: [
+        "./app/app.js",
+    ],
 
     output: {
         filename: "app.js",
@@ -18,10 +22,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loaders: ["react-hot", "babel-loader"],
             },
-            {
-                test: /\.html$/,
-                loader: "file?name=[name].[ext]",
-            },
         ]
     },
+    plugins: [HtmlWebpackPluginConfig]
 }
