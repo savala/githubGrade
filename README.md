@@ -1,1 +1,2 @@
-# Metrics for your Github Account
+# Get your Github Grade
+Built using React
